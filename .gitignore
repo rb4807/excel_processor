@@ -1,0 +1,46 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+*.env
+.env.local
+.env.*
+
+# Django specific
+db.sqlite3
+*.sqlite3
+*.log
+media/
+staticfiles/
+static/
+*.pot
+*.pyc
+
+# Celery / Pycc related
+celerybeat-schedule
+celerybeat.pid
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# VS Code & PyCharm
+.vscode/
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Testing
+.coverage
+htmlcov/
+pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.tox/
