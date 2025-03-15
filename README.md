@@ -53,6 +53,18 @@ python manage.py runserver
 ### 7. Access the Project
 Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser.
 
+## API Testing with Postman
+
+I have provided a **Postman collection** to help you test the API easily.
+
+### Steps to Import Postman Collection:
+1. Download [Postman](https://www.postman.com/downloads/).
+2. Open Postman and go to **File → Import**.
+3. Select the file: `postman/postman_collection.json`.
+4. The API endpoints will be available in your **Collections** tab.
+
+You can now test the API directly in Postman!
+
 ## Additional Commands
 - Create a superuser:
 ```sh

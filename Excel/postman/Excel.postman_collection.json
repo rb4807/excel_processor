@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "797a1976-cdfc-45c2-9a4a-c0cba886fd54",
+		"name": "Excel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28045371"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Download User Excel Template",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/import_users_csv/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"import_users_csv",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import Users CSV",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Admin/Downloads/users_import_template.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/users/user_excel_import/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"user_excel_import",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
