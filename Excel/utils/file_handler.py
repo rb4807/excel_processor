@@ -1,6 +1,6 @@
 ALLOWED_EXTENSIONS = {
     'image': {'png', 'jpg', 'jpeg', 'webp'},
-    'document': {'csv'}
+    'document': {'xlsx', 'xls', 'csv'}  
 }
 
 def is_file_valid(uploaded_file, file_type):
