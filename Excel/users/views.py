@@ -14,11 +14,13 @@ from utils.utils import is_template_vaild
 
 
 class UserExcelImportView(APIView):
+    """ Handle uploaded data of user's """
     def post(self, request, *args, **kwargs):
         file = request.FILES.get("file")
         if not file:
             return Response({"error": "No file provided"}, status=status.HTTP_400_BAD_REQUEST)
 
+        # File validation common funtion for allowed extensions
         if not is_file_valid(file, "document"):
             return Response({"error": "Invalid file type. Only CSV files are allowed."}, status=status.HTTP_400_BAD_REQUEST)
         
@@ -26,7 +28,8 @@ class UserExcelImportView(APIView):
             csv_data = file.read().decode("utf-8")
             csv_reader = csv.reader(StringIO(csv_data))
             headers = next(csv_reader, None)
-            
+
+            # Uploaded template validation with expected headers
             expected_headers = is_template_vaild(headers, "users")
             if expected_headers is not True:
                 return Response({"error": f"Invalid headers. Expected {expected_headers}."}, status=status.HTTP_400_BAD_REQUEST)
@@ -35,6 +38,7 @@ class UserExcelImportView(APIView):
             valid_serializers = []
             
             for row in csv_reader:
+                # Skip empty row
                 if not any(row):
                     continue  
                 
@@ -47,6 +51,7 @@ class UserExcelImportView(APIView):
                     errors.append({"row": row, "error": "Row contains missing values."})
                     continue
                 
+                # Field name correction for serilalizers
                 row_data["first_name"] = row_data.pop("name", "") 
                 serializer = UserSerializer(data=row_data)
                 
@@ -65,7 +70,9 @@ class UserExcelImportView(APIView):
         except Exception as e:
             return Response({"error": f"Unexpected server error: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
+    """ Handle user csv template download """
     def get(self, request, *args, **kwargs):
+        # File path on base directory
         file_path = os.path.join(settings.BASE_DIR, 'data', 'excel_template', 'users','users_import_template.csv')
         if os.path.exists(file_path):
             response = FileResponse(open(file_path, 'rb'))
