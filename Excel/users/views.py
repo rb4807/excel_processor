@@ -6,11 +6,14 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import FileResponse
 
+# Models
 from .serializers import UserSerializer
-
+from users.models import UserProfile
+# Modules
 from Excel import settings
 from utils.file_handler import is_file_valid
 from utils.utils import is_template_vaild
+from utils.rest_crud_handler import get_related_object
 
 
 class UserExcelImportView(APIView):
@@ -36,7 +39,8 @@ class UserExcelImportView(APIView):
 
             errors = []
             valid_serializers = []
-            
+            created_users = []
+
             for row in csv_reader:
                 # Skip empty row
                 if not any(row):
@@ -61,12 +65,18 @@ class UserExcelImportView(APIView):
                     errors.append({"row": row, "errors": serializer.errors})
             
             if errors:
-                return Response({ "saved_records": 0, "rejected_records": len(errors), "errors": errors }, status=status.HTTP_400_BAD_REQUEST)
+                return Response({ "saved_records": 0, "rejected_records": len(errors), "errors": errors, "created_users": []}, status=status.HTTP_400_BAD_REQUEST)
             
             for serializer in valid_serializers:
-                serializer.save()
+                user = serializer.save()
+                user_profile = get_related_object(user.id, UserProfile, 'user_id')
+                created_users.append({
+                    "first_name": user.first_name,
+                    "email": user.email,
+                    "age": user_profile.age if user_profile else ''
+                })  
             
-            return Response({ "saved_records": len(valid_serializers), "rejected_records": 0, "errors": [] }, status=status.HTTP_201_CREATED)
+            return Response({ "saved_records": len(valid_serializers), "rejected_records": 0, "errors": [], "created_users": created_users }, status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response({"error": f"Unexpected server error: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
