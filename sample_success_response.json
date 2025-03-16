@@ -1,0 +1,32 @@
+{
+    "saved_records": 5,
+    "rejected_records": 0,
+    "errors": [],
+    "created_users": [
+        {
+            "first_name": "Venkat",
+            "email": "venkat@gmail.com",
+            "age": 23
+        },
+        {
+            "first_name": "Vikram",
+            "email": "vikram@gmail.com",
+            "age": 28
+        },
+        {
+            "first_name": "Vinay",
+            "email": "vinay@gmail.com",
+            "age": 22
+        },
+        {
+            "first_name": "Jo",
+            "email": "jo@gmail.com",
+            "age": 27
+        },
+        {
+            "first_name": "Suhana",
+            "email": "suhana@gmail.com",
+            "age": 24
+        }
+    ]
+}

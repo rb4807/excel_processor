@@ -1,0 +1,67 @@
+{
+    "saved_records": 0,
+    "rejected_records": 5,
+    "errors": [
+        {
+            "row": [
+                "Venkat",
+                "venkat@gmail.com",
+                "23"
+            ],
+            "errors": {
+                "email": [
+                    "A user with this email already exists."
+                ]
+            }
+        },
+        {
+            "row": [
+                "Vikram",
+                "vikram@gmail.com",
+                "28"
+            ],
+            "errors": {
+                "email": [
+                    "A user with this email already exists."
+                ]
+            }
+        },
+        {
+            "row": [
+                "Vinay",
+                "vinay@gmail.com",
+                "22"
+            ],
+            "errors": {
+                "email": [
+                    "A user with this email already exists."
+                ]
+            }
+        },
+        {
+            "row": [
+                "Jo",
+                "jo@gmail.com",
+                "27"
+            ],
+            "errors": {
+                "email": [
+                    "A user with this email already exists."
+                ]
+            }
+        },
+        {
+            "row": [
+                "Suhana",
+                "suhana@gmail.com",
+                "24"
+            ],
+            "errors": {
+                "email": [
+                    "A user with this email already exists."
+                ]
+            }
+        }
+    ],
+    "created_users": []
+}

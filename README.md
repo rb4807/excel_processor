@@ -63,6 +63,9 @@ I have provided a **Postman collection** to help you test the API easily.
 3. Select the file: `postman/postman_collection.json`.
 4. The API endpoints will be available in your **Collections** tab.
 
+## Sample Input File
+For testing, I have added a sample input file in the project directory. You can use this file to test the API functionality.
+
 You can now test the API directly in Postman!
 
 ## Additional Commands
